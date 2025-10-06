@@ -198,7 +198,7 @@ function Stat({
   loading,
 }: {
   label: string;
-  value: unknown;
+  value?: string | number | null;
   loading?: boolean;
 }) {
   return (

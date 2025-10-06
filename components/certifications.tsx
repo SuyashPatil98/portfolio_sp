@@ -18,7 +18,6 @@ export function Certifications() {
             <span className="inline-block w-3 h-3 bg-primary rounded-full"></span>
             <span className="font-medium text-gray-800">{cert.title}</span>
           </div>
-          <span className="text-muted-foreground text-sm">{cert.year}</span>
         </div>
       ))}
     </div>

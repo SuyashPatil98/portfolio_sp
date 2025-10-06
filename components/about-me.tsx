@@ -1,4 +1,4 @@
-import type { Domain } from "../portfolio-home";
+import type { Domain } from "./portfolio-home";
 
 export function AboutMe({ domain }: { domain: Domain }) {
   const focus =

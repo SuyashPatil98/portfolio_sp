@@ -1,11 +1,11 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
 export async function GET(req: Request) {
   try {
-    const { searchParams } = new URL(req.url)
-    const username = searchParams.get("username")
+    const { searchParams } = new URL(req.url);
+    const username = searchParams.get("username");
     if (!username) {
-      return NextResponse.json({ error: "username required" }, { status: 400 })
+      return NextResponse.json({ error: "username required" }, { status: 400 });
     }
 
     const query = `
@@ -23,7 +23,7 @@ export async function GET(req: Request) {
           }
         }
       }
-    `
+    `;
 
     const resp = await fetch("https://leetcode.com/graphql", {
       method: "POST",
@@ -33,17 +33,20 @@ export async function GET(req: Request) {
       },
       body: JSON.stringify({ query, variables: { username } }),
       // Important: do not use credentials; public data fetch
-    })
+    });
 
     if (!resp.ok) {
-      return NextResponse.json({ error: "Upstream error", status: resp.status }, { status: 502 })
+      return NextResponse.json(
+        { error: "Upstream error", status: resp.status },
+        { status: 502 }
+      );
     }
-    const json = (await resp.json()) as any
-    const m = json?.data?.matchedUser
+    const json = (await resp.json()) as any;
+    const m = json?.data?.matchedUser;
 
-    const counts: Record<string, number> = {}
+    const counts: Record<string, number> = {};
     for (const item of m?.submitStats?.acSubmissionNum ?? []) {
-      counts[item?.difficulty ?? ""] = item?.count ?? 0
+      counts[item?.difficulty ?? ""] = item?.count ?? 0;
     }
     const data = {
       username: m?.username ?? username,
@@ -55,11 +58,18 @@ export async function GET(req: Request) {
       badges:
         (m?.badges ?? [])
           .filter((b: any) => b?.icon && b?.displayName)
-          .map((b: any) => ({ name: b.displayName as string, icon: b.icon as string })) ?? [],
-    }
+          .map((b: any) => ({
+            name: b.displayName as string,
+            icon: b.icon as string,
+          })) ?? [],
+    };
 
-    return NextResponse.json(data, { headers: { "cache-control": "s-maxage=3600, stale-while-revalidate=86400" } })
-  } catch (e) {
-    return NextResponse.json({ error: "Unexpected error" }, { status: 500 })
+    return NextResponse.json(data, {
+      headers: {
+        "cache-control": "s-maxage=3600, stale-while-revalidate=86400",
+      },
+    });
+  } catch (_e) {
+    return NextResponse.json({ error: "Unexpected error" }, { status: 500 });
   }
 }

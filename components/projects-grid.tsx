@@ -1,4 +1,4 @@
-import type { Domain } from "../portfolio-home";
+import type { Domain } from "./portfolio-home";
 import { Card } from "@/components/ui/card";
 
 const byDomain: Record<Domain, { title: string; summary: string }[]> = {

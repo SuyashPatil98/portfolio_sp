@@ -1,4 +1,4 @@
-import type { Domain } from "../portfolio-home";
+import type { Domain } from "./portfolio-home";
 import { Badge } from "@/components/ui/badge";
 
 export function WorkExperience({ domain }: { domain: Domain }) {
