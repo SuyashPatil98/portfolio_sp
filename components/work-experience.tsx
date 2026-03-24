@@ -1,40 +1,30 @@
-import type { Domain } from "./portfolio-home";
 import { Badge } from "@/components/ui/badge";
 
-export function WorkExperience({ domain }: { domain: Domain }) {
-  const tags =
-    domain === "DevOps"
-      ? ["Kubernetes", "Jenkins", "CI/CD", "AWS"]
-      : domain === "Data Science"
-      ? ["Python", "SQL", "PySpark", "DataBricks", "MLOps"]
-      : ["MERN", "Javascript", "Redis", "Docker"];
-
-  const dataScienceKeywords = [
-    "Apache Spark",
-    "Predictive Modeling",
-    "Data Driven Insights",
-  ];
-
+export function WorkExperience() {
   const fullExperience = [
     {
       role: "Associate Consultant - Capgemini, Mumbai, India",
-      period: "2021 — 2024",
+      period: "May 2021 — Sept 2024",
       mode: "Hybrid",
       bullets: [
-        `Back-End & API: Built and optimized backend systems and 15+ REST APIs with Redis caching, improving performance by <strong>40–50%</strong>.`,
-        `DevOps & Scalability: Implemented CI/CD pipelines and resolved 50+ issues, boosting deployment speed and system efficiency by <strong>30–60%</strong>.`,
+        `Built distributed batch and near real-time processing workflows using <strong>Python</strong> and <strong>Apache Spark</strong>, ensuring scalable handling of high-volume datasets with robust schema validation, monitoring, and fault tolerance.`,
+        `Performed exploratory data analysis (EDA), statistical validation, and feature engineering to support predictive modeling initiatives; delivered insights that influenced product strategy and operational decision-making.`,
+        `Implemented CI/CD-enabled data and ML workflows with automated testing and orchestration using <strong>Airflow</strong> and cloud infrastructure, reducing deployment time by <strong>60%</strong> and improving production reliability.`,
+        `Collaborated directly with cross-functional teams and external clients to gather analytical requirements, present model findings, and translate insights into measurable business impact.`,
+        `Mentored <strong>2+</strong> junior engineers and interns on data modeling, SQL optimization, and production-grade pipeline development, impacting team productivity and code quality standards by <strong>25%</strong>.`,
+        `Recognized as a top performer for <strong>2 consecutive quarters</strong> and promoted twice within one year for delivering solutions that exceeded stakeholder expectations.`,
       ],
-      tags,
+      tags: ["Python", "Apache Spark", "Airflow", "AWS", "ETL", "ML Pipelines"],
     },
     {
       role: "Data Science Intern - Capgemini, Pune, India",
       period: "July 2019 — Sept 2019",
       mode: "Onsite",
       bullets: [
-        `ETL & Automation: Developed an ETL model that automated data extraction, streamlining workflows and improving output by <strong>40%</strong>.`,
-        `Analytics & Dashboards: Created Python/R scripts and real-time dashboards, enhancing decision-making and reducing operational expenditure by <strong>35%</strong>.`,
+        `Designed and implemented an automated ETL pipeline that streamlined data extraction and transformation, increasing workflow efficiency by <strong>40%</strong> and reducing manual intervention.`,
+        `Built interactive dashboards with real-time analytics, cutting operational expenditure by <strong>35%</strong> and supporting leadership in strategic planning.`,
       ],
-      tags: dataScienceKeywords,
+      tags: ["Python", "ETL", "Dashboards", "Data Analytics"],
     },
   ];
 
