@@ -4,12 +4,12 @@ export function PublicationsList() {
       title:
         "A Federated Transfer Learning Framework with Differential Privacy for Secure Monkeypox Diagnosis",
       venue: "SCEECS, 2025",
-      link: "#",
+      link: "https://ieeexplore.ieee.org/document/10940827",
     },
     {
       title:
-        "Data Augmentation and Transfer Learning Strategies to Manage Class Imbalance in Pneumonia Detection",
-      venue: "SCEECS, 2026",
+        "Hybrid Representation Learning for Correlation-Guided Insect Acoustic Phenotyping",
+      venue: "Scientific Reports, 2026 (Under Review)",
       link: "#",
     },
     {
