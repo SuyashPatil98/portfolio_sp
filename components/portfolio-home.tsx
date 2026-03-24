@@ -1,26 +1,11 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { DomainSwitcher } from "./domain-switcher";
 import { BentoGrid } from "./bento-grid";
 import { ThemeToggle } from "./theme-toggle";
 import AnimatedName from "./animated-name";
 
-export type Domain = "DevOps" | "Data Science" | "Software Development";
-
 export default function PortfolioHome() {
-  const [domain, setDomain] = useState<Domain>("DevOps");
-
-  const domainTagline = useMemo(() => {
-    switch (domain) {
-      case "DevOps":
-        return "Automating delivery, observability, and reliable platforms.";
-      case "Data Science":
-        return "Turning data into decisions with ML and clear narratives.";
-      case "Software Development":
-        return "Building robust, accessible, and performant web apps.";
-    }
-  }, [domain]);
+  const tagline = "Data Scientist building scalable ETL pipelines, distributed workflows, and cloud data warehouse solutions.";
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 md:py-14">
@@ -30,7 +15,7 @@ export default function PortfolioHome() {
             <AnimatedName name="Suyash Patil" className="align-baseline" />
           </h1>
           <p className="text-pretty text-muted-foreground md:text-lg">
-            {domainTagline}
+            {tagline}
           </p>
 
           <div
@@ -94,11 +79,10 @@ export default function PortfolioHome() {
 
         <div className="flex items-center gap-2 self-start md:self-auto">
           <ThemeToggle />
-          <DomainSwitcher value={domain} onChange={setDomain} />
         </div>
       </header>
 
-      <BentoGrid domain={domain} />
+      <BentoGrid />
     </main>
   );
 }

@@ -1,41 +1,17 @@
-import type { Domain } from "./portfolio-home";
 import { Card } from "@/components/ui/card";
 
-const byDomain: Record<Domain, { title: string; summary: string }[]> = {
-  DevOps: [
-    {
-      title: " bugAlert.io",
-      summary: "AI-Powered Code Bug Prediction Platform",
-    },
-    {
-      title: "CrossLing Search",
-      summary: "Cross-Language Information Retrieval System",
-    },
-  ],
-  "Data Science": [
-    {
-      title: " bugAlert.io",
-      summary: "AI-Powered Code Bug Prediction Platform",
-    },
-    {
-      title: "CrossLing Search",
-      summary: "Cross-Language Information Retrieval System",
-    },
-  ],
-  "Software Development": [
-    {
-      title: " bugAlert.io",
-      summary: "AI-Powered Code Bug Prediction Platform",
-    },
-    {
-      title: "CrossLing Search",
-      summary: "Cross-Language Information Retrieval System",
-    },
-  ],
-};
+const projects = [
+  {
+    title: "bugAlert.io",
+    summary: "AI-Powered Code Bug Prediction Platform",
+  },
+  {
+    title: "CrossLing Search",
+    summary: "Cross-Language Information Retrieval System",
+  },
+];
 
-export function ProjectsGrid({ domain }: { domain: Domain }) {
-  const projects = byDomain[domain];
+export function ProjectsGrid() {
   return (
     <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
       {projects.map((p) => (
