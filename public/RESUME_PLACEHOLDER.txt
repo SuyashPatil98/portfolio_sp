@@ -1,0 +1,8 @@
+Place your one-page resume here as `resume.pdf`.
+
+The site references `/resume.pdf` from:
+- Hero section "Resume" button
+- Contact section "Download Resume" button
+
+When `resume.pdf` exists in this folder, those buttons will serve it directly
+at https://www.suyashpatil.me/resume.pdf

@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark theme (default) — engineering logbook */
+    --bg: 10 10 12;
+    --bg-alt: 14 14 17;
+    --bg-raised: 20 20 24;
+    --ink: 240 240 244;
+    --ink-muted: 161 161 170;
+    --ink-subtle: 113 113 122;
+    --line: 39 39 45;
+    --line-strong: 63 63 70;
+    --accent: 52 211 153;       /* emerald-400, restrained */
+    --accent-dim: 16 185 129;   /* emerald-500 */
+  }
+
+  .light {
+    --bg: 252 252 253;
+    --bg-alt: 244 244 245;
+    --bg-raised: 255 255 255;
+    --ink: 24 24 27;
+    --ink-muted: 82 82 91;
+    --ink-subtle: 113 113 122;
+    --line: 228 228 231;
+    --line-strong: 212 212 216;
+    --accent: 5 150 105;        /* emerald-600 for light mode */
+    --accent-dim: 4 120 87;
+  }
+
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-feature-settings: "ss01", "ss02", "cv01", "cv11";
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent) / 0.25);
+    color: rgb(var(--ink));
+  }
+
+  /* Subtle dotted grid background */
+  .bg-grid {
+    background-image: radial-gradient(rgb(var(--line)) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
+  }
+
+  /* Crosshair plus marks at intersections — used decoratively */
+  .bg-crosshair {
+    background-image:
+      linear-gradient(to right, rgb(var(--line) / 0.4) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--line) / 0.4) 1px, transparent 1px);
+    background-size: 80px 80px;
+  }
+}
+
+@layer components {
+  .label-mono {
+    @apply font-mono text-[11px] tracking-[0.18em] uppercase text-ink-muted;
+  }
+
+  .label-mono-accent {
+    @apply font-mono text-[11px] tracking-[0.18em] uppercase text-accent;
+  }
+
+  .container-edge {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-12;
+  }
+
+  .section-pad {
+    @apply py-20 md:py-28;
+  }
+
+  /* Card style with hairline border */
+  .card-hairline {
+    @apply rounded-xl border border-line bg-bg-raised/40 transition-colors duration-300;
+  }
+
+  .card-hairline:hover {
+    border-color: rgb(var(--line-strong));
+  }
+
+  /* Bracket button — '[ label → ]' style */
+  .btn-bracket {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-md border border-line bg-bg-raised/60 font-mono text-sm text-ink hover:border-accent/60 hover:bg-bg-raised hover:text-accent transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2.5 rounded-md bg-ink text-bg font-mono text-sm font-medium hover:bg-ink/90 transition-all duration-200;
+  }
+
+  /* Status dot — used in nav */
+  .status-dot {
+    @apply relative inline-flex h-1.5 w-1.5 rounded-full bg-accent;
+  }
+
+  .status-dot::after {
+    content: "";
+    @apply absolute inset-0 rounded-full bg-accent animate-ping;
+  }
+}
+
+/* Hide scrollbar but keep functionality on horizontal scrollers */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
