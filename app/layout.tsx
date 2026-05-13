@@ -71,7 +71,7 @@ const themeInit = `
   (function () {
     try {
       var stored = localStorage.getItem('theme');
-      if (stored === 'light') document.documentElement.classList.add('light');
+      if (stored === 'fun') document.documentElement.classList.add('fun');
     } catch (e) {}
   })();
 `;

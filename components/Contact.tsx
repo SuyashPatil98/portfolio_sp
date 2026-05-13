@@ -10,7 +10,12 @@ import {
   ArrowUpRight,
 } from "lucide-react";
 import SectionHeader from "./SectionHeader";
+import LeadForm from "./LeadForm";
 import { personal } from "@/lib/data";
+
+function trackResumeClick() {
+  fetch("/api/resume-click", { method: "POST" }).catch(() => {});
+}
 
 const CHANNELS = [
   {
@@ -105,7 +110,9 @@ export default function Contact() {
             </p>
             <a
               href={personal.resumeUrl}
-              download
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={trackResumeClick}
               className="btn-primary self-start"
             >
               <Download size={14} />
@@ -120,6 +127,9 @@ export default function Contact() {
             </div>
           </motion.div>
         </div>
+
+        {/* Inline lead-capture form */}
+        <LeadForm />
       </div>
     </section>
   );

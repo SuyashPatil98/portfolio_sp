@@ -17,17 +17,81 @@
     --accent-dim: 16 185 129;   /* emerald-500 */
   }
 
-  .light {
-    --bg: 252 252 253;
-    --bg-alt: 244 244 245;
-    --bg-raised: 255 255 255;
-    --ink: 24 24 27;
-    --ink-muted: 82 82 91;
-    --ink-subtle: 113 113 122;
-    --line: 228 228 231;
-    --line-strong: 212 212 216;
-    --accent: 5 150 105;        /* emerald-600 for light mode */
-    --accent-dim: 4 120 87;
+  /* Fun mode — synthwave neon baby pink on black */
+  .fun {
+    --bg: 0 0 0;
+    --bg-alt: 10 4 14;
+    --bg-raised: 18 8 24;
+    --ink: 255 240 250;
+    --ink-muted: 230 200 230;
+    --ink-subtle: 180 130 180;
+    --line: 80 30 70;
+    --line-strong: 150 60 115;
+    --accent: 255 143 209;      /* neon baby pink #FF8FD1 */
+    --accent-dim: 255 73 198;   /* deeper hot pink for hover */
+  }
+
+  /* Synthwave atmosphere — soft pink horizon glow top/bottom */
+  .fun body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 0%, rgb(255 143 209 / 0.18), transparent 60%),
+      radial-gradient(ellipse 90% 50% at 50% 100%, rgb(255 73 198 / 0.12), transparent 60%);
+  }
+
+  /* Perspective grid floor — only in fun mode */
+  .fun body::after {
+    content: "";
+    position: fixed;
+    left: 50%;
+    bottom: 0;
+    width: 200vw;
+    height: 50vh;
+    transform: translateX(-50%) perspective(400px) rotateX(60deg);
+    transform-origin: bottom center;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgb(var(--accent) / 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--accent) / 0.25) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: linear-gradient(to top, black 0%, transparent 90%);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 90%);
+    opacity: 0.6;
+  }
+
+  /* Neon glow on headings + accents in fun mode */
+  .fun h1,
+  .fun h2,
+  .fun h3 {
+    text-shadow: 0 0 24px rgb(var(--accent) / 0.45);
+  }
+
+  .fun .status-dot {
+    box-shadow: 0 0 12px rgb(var(--accent));
+  }
+
+  .fun .btn-primary {
+    background-color: rgb(var(--accent));
+    color: rgb(0 0 0);
+    box-shadow: 0 0 24px rgb(var(--accent) / 0.5);
+  }
+
+  .fun .btn-primary:hover {
+    background-color: rgb(var(--accent-dim));
+    box-shadow: 0 0 32px rgb(var(--accent-dim) / 0.65);
+  }
+
+  .fun .btn-bracket:hover {
+    box-shadow: 0 0 18px rgb(var(--accent) / 0.35);
+  }
+
+  .fun .card-hairline:hover {
+    box-shadow: 0 0 24px rgb(var(--accent) / 0.18);
   }
 
   * {
