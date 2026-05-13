@@ -51,7 +51,14 @@ export async function POST(req: Request) {
     ]);
   } catch (err) {
     console.error("Sheet append failed:", err);
-    return Response.json({ error: "Storage failed" }, { status: 500 });
+    const detail =
+      err instanceof Error
+        ? `${err.name}: ${err.message}`
+        : String(err);
+    return Response.json(
+      { error: "Storage failed", detail },
+      { status: 500 },
+    );
   }
 
   await sendNotificationEmail(
