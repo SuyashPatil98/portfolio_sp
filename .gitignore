@@ -30,3 +30,7 @@ yarn-error.log*
 
 # typescript
 *.tsbuildinfo
+*service-account*.json
+*-credentials*.json
+portfolio-leads-*.json
+*.pem

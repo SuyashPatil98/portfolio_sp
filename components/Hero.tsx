@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Download, Github, Linkedin } from "lucide-react";
 import { personal, hero } from "@/lib/data";
@@ -9,7 +10,27 @@ const fadeStagger = {
   show: { opacity: 1, y: 0 },
 };
 
+function trackResumeClick() {
+  fetch("/api/resume-click", { method: "POST" }).catch(() => {});
+}
+
 export default function Hero() {
+  const [views, setViews] = useState<number | null>(null);
+
+  useEffect(() => {
+    const SESSION_KEY = "portfolio-view-counted";
+    const alreadyCounted = sessionStorage.getItem(SESSION_KEY);
+    const method = alreadyCounted ? "GET" : "POST";
+
+    fetch("/api/views", { method })
+      .then((r) => r.json())
+      .then((d) => {
+        if (typeof d?.count === "number") setViews(d.count);
+        if (!alreadyCounted) sessionStorage.setItem(SESSION_KEY, "1");
+      })
+      .catch(() => {});
+  }, []);
+
   return (
     <section id="top" className="relative overflow-hidden">
       {/* Decorative dotted grid */}
@@ -90,7 +111,9 @@ export default function Hero() {
               </a>
               <a
                 href={personal.resumeUrl}
-                download
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={trackResumeClick}
                 className="btn-bracket"
               >
                 <Download size={14} />
@@ -133,11 +156,15 @@ export default function Hero() {
               </div>
               <dl className="space-y-3 font-mono text-[12px]">
                 <Row k="LOCATION" v={personal.location} />
-                <Row k="ROLE" v="SDE / ML / Data &amp; AI" />
+                <Row k="ROLE" v="SDE / ML / Data & AI" />
                 <Row k="EXPERIENCE" v="3.5+ years" />
                 <Row k="EDUCATION" v="M.Tech, IIIT Bhopal" />
                 <Row k="STATUS" v="Open to roles" highlight />
                 <Row k="DSA" v="LeetCode 1875" />
+                <Row
+                  k="VIEWS"
+                  v={views === null ? "..." : views.toLocaleString()}
+                />
               </dl>
             </div>
 
@@ -176,10 +203,7 @@ function Row({
   return (
     <div className="flex items-center justify-between gap-4">
       <dt className="text-ink-subtle">{k}</dt>
-      <dd
-        className={highlight ? "text-accent" : "text-ink"}
-        dangerouslySetInnerHTML={{ __html: v }}
-      />
+      <dd className={highlight ? "text-accent" : "text-ink"}>{v}</dd>
     </div>
   );
 }
