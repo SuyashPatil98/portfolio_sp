@@ -204,7 +204,7 @@ export const projects: Project[] = [
   "PostgreSQL",
   "TypeScript",
 ],
-  live: "https://auction-bhai.vercel.app",
+  link: "https://auction-bhai.vercel.app",
 },
   ,
   {
