@@ -234,7 +234,7 @@ export const projects: Project[] = [
       "Docker",
       "Python",
     ],
-    link: "https://github.com/SuyashPatil98/KG-MAG",
+    link: "https://youtu.be/CjslMkEpErk",
   },
   {
     title: "Federated Transfer Learning for Monkeypox Diagnosis",
