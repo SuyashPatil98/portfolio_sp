@@ -204,8 +204,7 @@ export const projects: Project[] = [
       "PostgreSQL",
       "TypeScript",
     ],
-    link: "https://github.com/SuyashPatil98/auctionBhai",
-    live: "https://auction-bhai.vercel.app",
+    link: "https://auction-bhai.vercel.app",
   },
   {
     title: "Knowledge-Grounded Article Generator",
