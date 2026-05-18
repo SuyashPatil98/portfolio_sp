@@ -154,7 +154,7 @@ function ProjectCard({ project, idx }: { project: Project; idx: number }) {
             className="btn-bracket"
           >
             <Github size={13} />
-            <span>Code</span>
+            <span>Demo</span>
             <ArrowUpRight size={12} />
           </a>
         )}
