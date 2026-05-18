@@ -178,6 +178,36 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+  title: "FiFantasy — End-to-end fantasy football platform for the FIFA World Cup 2026",
+  tagline:
+    "End-to-end deployed: data engineering, ML rating model, realtime backend, system-design invariants, multi-project ops — solo, every layer.",
+  kind: "Open Project",
+  description:
+    "Solo build, end-to-end deployed. Owned every layer — ingestion connectors, entity matching, layered rating model, simulator, realtime scoring engine, Next.js app, and ops. The interesting decisions live as much in the migrations folder and region pinning as in the model layers. Mirrors patterns I work with professionally (idempotent pipelines, schema-as-invariant, regional deploy tuning) on a stack owned from schema to UI to production.",
+  architecture: [
+    "[Data Engineering] Idempotent ETL across 4 source connectors (REST · CSV · Kaggle · JSON) into Postgres via 22 numbered migrations, with an ingestion_runs audit table and rate-limit-aware backoff so reruns are safe by construction",
+    "[ML] 4-layer position-bucketed rating model: baseline + age curve → market-value z-score → Gemini LLM augmentation → international pedigree; blend weights driven by entity-match confidence so the model degrades gracefully on missing data",
+    "[System Design] Partial unique indexes (UNIQUE … WHERE status = 'pending') and pure idempotent scoring functions enforce auction, trade, and scoring invariants in the database — not in app code that can drift",
+    "[Realtime / Performance] Supabase logical replication → channels; Tokyo → Mumbai DB region migration measured ~100ms p95 improvement (~250ms → ~150ms cross-continent), executed via a two-phase migration script kept in the repo",
+    "[DevOps] Two Vercel projects (private league + public guest demo) deployed from one branch via env-driven SITE_MODE flag; pinned bom1 server region to co-locate with Mumbai DB (~5ms server↔DB vs ~120ms pre-pin)",
+  ],
+  metrics: [
+    { value: "~100ms", label: "p95 latency cut via region migration" },
+    { value: "47k → 94%", label: "Players matched, high/med confidence" },
+  ],
+  stack: [
+  "Distributed Systems",
+  "ETL Pipelines",
+  "Statistical Modeling",
+  "LLM Integration",
+  "Cloud Deployment",
+  "PostgreSQL",
+  "TypeScript",
+],
+  live: "https://auction-bhai.vercel.app",
+},
+  ,
+  {
     title: "Knowledge-Grounded Article Generator",
     tagline:
       "Multi-agent RAG system for citation-grounded long-form generation.",
