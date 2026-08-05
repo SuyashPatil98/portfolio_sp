@@ -33,7 +33,7 @@ export const hero = {
 
 export const about = {
   intro:
-    "I work where software engineering meets data systems and applied ML. Three-and-a-half years at Capgemini's financial services practice shaped how I think: pipelines that don't drop records, models that ship behind evaluation gates, GenAI that runs on a budget.",
+    "I work where software engineering meets data systems and applied ML. Three-and-a-half years at Capgemini's enterprise data practice shaped how I think: pipelines that don't drop records, models that ship behind evaluation gates, GenAI that runs on a budget.",
   intersection: [
     {
       title: "Software Engineering",
@@ -61,7 +61,7 @@ export const about = {
 export const metrics = [
   {
     value: "~200 GB",
-    label: "Financial Data Processed",
+    label: "Data Processed",
     context: "Compressed, distributed Spark ingestion on AWS EMR",
   },
   {
@@ -72,7 +72,7 @@ export const metrics = [
   {
     value: "30–40%",
     label: "Manual Effort Cut",
-    context: "GPT-4/3.5 backend for financial document extraction",
+    context: "GPT-4/3.5 backend for document extraction & summarization",
   },
   {
     value: "35–50%",
@@ -87,7 +87,7 @@ export const metrics = [
   {
     value: "90%",
     label: "Classification Accuracy",
-    context: "Federated learning with differential privacy on medical data",
+    context: "Federated learning with differential privacy on sensitive data",
   },
   {
     value: "1875",
@@ -109,14 +109,14 @@ export const experience = [
     location: "Mumbai, India",
     period: "May 2021 — Sep 2024",
     mode: "Hybrid",
-    tag: "Financial Services",
+    tag: "Data & ML",
     points: [
       {
         title: "Distributed ingestion service",
-        body: "Built a fault-tolerant ingestion service in Python and Apache Spark on AWS EMR processing ~200 GB of compressed financial data, with schema validation, dead-letter queues, and partitioned writes to S3.",
+        body: "Built a fault-tolerant ingestion service in Python and Apache Spark on AWS EMR processing ~200 GB of compressed data at scale, with schema validation, dead-letter queues, and partitioned writes to S3.",
       },
       {
-        title: "Risk & fraud ML pipeline",
+        title: "Risk-scoring & detection ML pipeline",
         body: "Built modular components spanning feature engineering, training, threshold optimization, batch inference, and evaluation — improving AUC/F1 and cutting production false negatives.",
       },
       {
@@ -125,7 +125,7 @@ export const experience = [
       },
       {
         title: "GenAI document processing",
-        body: "Engineered a GPT-4/GPT-3.5 backend for extraction and summarization of financial documents with prompt engineering, caching, and batching — cutting manual effort by 30–40%.",
+        body: "Engineered a GPT-4/GPT-3.5 backend for extraction and summarization of long, unstructured documents with prompt engineering, caching, and batching — cutting manual effort by 30–40%.",
       },
       {
         title: "Recognition",
@@ -262,14 +262,14 @@ export const projects: Project[] = [
     paperLink: "https://ieeexplore.ieee.org/document/10940827",
   },
   {
-    title: "Financial Risk & Fraud ML Platform",
+    title: "Production Risk & Detection ML Platform",
     tagline:
-      "Production data + ML platform powering risk decisions in financial services.",
+      "Production data + ML platform powering risk and detection decisions at enterprise scale.",
     kind: "Professional Case Study",
     description:
       "End-to-end platform delivered at Capgemini: distributed ingestion, modular ML pipeline, Airflow-orchestrated retraining and evaluation gating. Closed-source — described here from professional experience.",
     architecture: [
-      "Spark on EMR for distributed ingestion of compressed financial data",
+      "Spark on EMR for distributed ingestion of compressed data at scale",
       "Schema validation + dead-letter queues + partitioned S3 writes",
       "Modular ML pipeline: features → training → thresholds → batch inference",
       "Airflow DAGs gate deployment behind evaluation metrics",
@@ -439,13 +439,13 @@ export const achievements = [
     title: "Capgemini Top Performer",
     subtitle: "Two consecutive quarters",
     detail:
-      "Recognized for delivering production-grade data and ML systems across financial services use cases.",
+      "Recognized for delivering production-grade data and ML systems across enterprise data & ML use cases.",
   },
   {
     title: "Promoted twice in 2 years",
     subtitle: "Capgemini",
     detail:
-      "Recognition for engineering depth and consistent on-call delivery in financial services.",
+      "Recognition for engineering depth and consistent on-call delivery of production data & ML systems.",
   },
   {
     title: "CodeChef Rank < 50 (×2)",
